@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: #fff;
+            cursor: pointer;
+            outline: none;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background: #fafafa;
+            padding: 10px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .delete {
+            margin-left: 10px;
+            color: red;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .delete:hover {
+            color: darkred;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="text" placeholder="Enter your thoughts" id="inp">
+        <button id="btn1" onclick="add()">Click Me!</button>
+        <ul id="items"></ul>
+    </div>
+
+    <script>
+        function add() {
+            let task = document.getElementById("inp");
+            let val = task.value.trim();
+            if (val) {
+                let li = document.createElement('li');
+                li.innerHTML = val;
+                
+                let del = document.createElement('span');
+                del.innerHTML = "X";
+                del.classList.add('delete');
+                del.onclick = function() {
+                    this.parentElement.remove();
+                };
+                
+                li.appendChild(del);
+                document.getElementById('items').appendChild(li);
+                task.value = '';
+            }
+        }
+    </script>
+</body>
+</html>
